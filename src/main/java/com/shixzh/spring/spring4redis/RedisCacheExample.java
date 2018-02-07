@@ -4,16 +4,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class RedisCacheExample {
-	public static void main(String[] args) {
 
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-		MusicService musicService = ctx.getBean(MusicService.class);
+    public static void main(String[] args) {
 
-		System.out.println("message: " + musicService.play("trumpet"));
-		System.out.println("message: " + musicService.play("trumpet"));
-		System.out.println("message: " + musicService.play("guitar"));
-		System.out.println("message: " + musicService.play("guitar"));
+        @SuppressWarnings("resource")
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        MusicService musicService = ctx.getBean(MusicService.class);
 
-		System.out.println("Done.");
-	}
+        System.out.println("message: " + musicService.play("trumpet"));
+        System.out.println("message: " + musicService.play("trumpet"));
+        System.out.println("message: " + musicService.play("guitar"));
+        System.out.println("message: " + musicService.play("guitar"));
+        System.out.println("message: " + musicService.cleanMessageCache());
+
+        System.out.println("Done.");
+    }
 }
